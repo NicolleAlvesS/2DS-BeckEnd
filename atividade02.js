@@ -1,4 +1,4 @@
-const produtos = [
+const filmes = [
     {
         nome: "Homem de Ferro",
         ano: 2008, 

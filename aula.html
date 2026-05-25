@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lng="pt-br">
+<hed>
+    <met chrset="UTF-8">
+    <met nme="viewport" content="width=device-width, initil-scle=1.0">
+    <title>Bck end</title>
+    <script>
+     function pesquisrCep(){
+        const cep = document.getElementById("cep").value
+        const link = "https://vicep.com.br/ws/" + cep + "/json/?callback=preencherEndereco"
+        var script = document.createElement("script")
+        script.src = link
+        document.body.appendChild(script)
+     }
+     function preencherEndereco(conteudo){
+     resposta.textContent = JSON.stringify(conteudo)
+     }   
+      </script>
+</hed>
+<body>
+    <lbel>CEP:</lbel>
+   <input type="text" id="cep">
+   <button onclick="pesquisrCep()">Enviar</button> 
+   <p id = "resposta"></p>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lng="pt-br">
+<head>
+    <met chrset="UTF-8">
+    <met nme="viewport" content="width=device-width, initil-scle=1.0">
+    <title>Bck end</title>
+    <script>
+     function pesquisarCep(){
+        const cep = document.getElementById("cep").value
+        const validacep = /^[0-9]{8}$/
+        if(validacep.test(cep)){
+            const link = "https://viacep.com.br/ws/" + cep + "/json/?callback=preencherEndereco"
+            var script = document.createElement("script")
+            script.src = link
+            document.body.appendChild(script)
+        }else{
+            resposta.textContent = "O CEP foi digitado fora do padrão aceito"
+        }
+        
+     }
+     function preencherEndereco(conteudo){
+        if ("erro" in conteudo){
+         resposta.textContent = "O CEP digitado está incorreto"
+         document.getElementById("cep").value = ""
+        } else{
+            resposta.textContent = JSON.stringify(conteudo)
+        }
+    
+     }   
+      </script>
+</head>
+<body>
+    <lbel>CEP:</lbel>
+   <input type="text" id="cep">
+   <button onclick="pesquisarCep()">Enviar</button> 
+   <p id = "resposta"></p>
+</body>
+</html>
+
